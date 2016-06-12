@@ -15,6 +15,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    byebug (9.0.5)
     celluloid (0.17.3)
       celluloid-essentials
       celluloid-extras
@@ -98,6 +99,7 @@ PLATFORMS
 
 DEPENDENCIES
   blinkstick!
+  byebug
   celluloid-io
   pry
   slack-ruby-bot

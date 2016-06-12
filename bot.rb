@@ -1,28 +1,28 @@
+$LOAD_PATH.unshift( File.dirname(__FILE__) )
+
 require "slack-ruby-bot"
 require "pry"
-require "blinkstick"
+require "blink_stick_controller"
 
 class PongBot < SlackRubyBot::Bot
   def self.stick
-    @stick ||= BlinkStick.find_all.first
+    @stick ||= BlinkStickController.new
   end
-  def self.reset_stick; @stick = nil; end
 
-  command "ping" do |client, data, match|
+  command "ping" do |_client, data, _match|
     client.say(text: "pong", channel: data.channel)
-binding.pry
+  end
+
+  command "pry me a river" do |client, data, _match|
+    client.say(text: "Prying...", channel: data.channel)
+    binding.pry
+    client.say(text: "...Done Prying", channel: data.channel)
   end
 
   command "blink" do |client, data, match|
-    retries = 0
     begin
-      input_match = match[:expression].match /#(.+)/
-      color = input_match ? Color::RGB.by_hex( input_match[1] ) : Color::RGB.by_name( match[:expression] )
-      stick.color = color
+      color = stick.set_color( match[:expression] )
       client.say( text: "##{color.hex}", channel: data.channel )
-    rescue LIBUSB::ERROR_NO_DEVICE
-      reset_stick
-      retry if (retries += 1) < 3
     rescue StandardError => e
       client.say( text: [e.class, e.message], channel: data.channel )
     end
@@ -30,4 +30,3 @@ binding.pry
 end
 
 PongBot.run
-
