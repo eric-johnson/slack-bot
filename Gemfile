@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "blinkstick", path: "/Users/ejohnson/dev/blinkstick/"
+gem "blinkstick", github: "eric-johnson/blinkstick-ruby"
 gem "slack-ruby-bot"
 gem "celluloid-io"
 gem "pry"

@@ -1,3 +1,6 @@
+/.bundle
 .env
 vendor/bundle
 .byebug_history
+
+bot.pid

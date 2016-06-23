@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/ejohnson/dev/blinkstick
+GIT
+  remote: git://github.com/eric-johnson/blinkstick-ruby.git
+  revision: bd21045bbd433967e9063bc5b7649cfbb6ed8cc8
   specs:
     blinkstick (1.0.1)
       color (>= 1.4.2)
@@ -105,4 +106,4 @@ DEPENDENCIES
   slack-ruby-bot
 
 BUNDLED WITH
-   1.11.2
+   1.12.2
